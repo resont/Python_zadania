@@ -16,7 +16,7 @@ if __name__ == "__main__":
                 print(cub)
         except InvalidData as e:
             print(e)
-        except IndexError as e:
+        except IndexError:
             print("Niepoprawna ilość boków!")
 
     f.close()
