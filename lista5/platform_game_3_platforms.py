@@ -78,12 +78,13 @@ class Platform(pygame.sprite.Sprite):
     def __init__(self,colour,width,height,rect_x,rect_y):
         self.width = width
         self.height = height
-        self.rect = pygame.Surface([width,height]).fill(colour)
+        self.rect = pygame.Surface([width,height])
+        self.rect.fill(colour)
         self.rect.x = rect_x
         self.rect.y = rect_y
 
     def draw(self, surface):
-        surface.blit(self.rect, (self.rect.x,self.rect.y))
+        surface.blit(self.rect)
 
 class Level():
     def __init__(self,Player):
@@ -99,16 +100,16 @@ class Level():
             i.draw(surface)
 
 class Level_1(Level):
-    def __init(self):
-        super().__init__()
-        pl1 = Platform((0,255,0),140,70,40,40)
-        self.set_of_platforms.add(pl1)
+    def __init__(self,player):
+        super().__init__(player)
+        self.pl1 = Platform((0,255,0),140,70,40,40)
+        self.set_of_platforms.add(self.pl1)
+        
 
 # konkretyzacja obiektów
 player = Player(gm.STAND_R)
 player.rect.center = screen.get_rect().center
 level_1 = Level_1(player)
-
 
 # głowna pętla gry
 window_open = True
